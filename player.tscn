@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://b0nnnepfjvfl4"]
+
+[ext_resource type="PackedScene" uid="uid://b8ktsdmhki6u4" path="res://art/DamagedHelmet.glb" id="1_4flbx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_onrkg"]
+size = Vector3(60, 1, 60)
+
+[sub_resource type="BoxMesh" id="BoxMesh_i3pqv"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_hqtel"]
+radius = 0.949178
+
+[node name="Main" type="Node"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+shape = SubResource("BoxShape3D_onrkg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(60, 0, 0, 0, 1, 0, 0, 0, 60, 0, -1, 0)
+mesh = SubResource("BoxMesh_i3pqv")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17.3566, 0)
+
+[node name="Player2" type="CharacterBody3D" parent="."]
+
+[node name="Pivot" type="Node3D" parent="Player2"]
+
+[node name="DamagedHelmet" parent="Player2/Pivot" instance=ExtResource("1_4flbx")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.271064)
+shape = SubResource("SphereShape3D_hqtel")
