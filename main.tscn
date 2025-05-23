@@ -36,7 +36,7 @@ size = Vector3(95, 19, 95)
 environment = SubResource("Environment_0xm2m")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.214735, 0.435789, -0.874058, 0, 0.894934, 0.446198, 0.976672, 0.0958144, -0.192174, 0, 0, 0)
+transform = Transform3D(-0.214735, 0.435789, -0.874058, 0, 0.894934, 0.446198, 0.976672, 0.0958143, -0.192174, 0, 0, 0)
 shadow_enabled = true
 directional_shadow_blend_splits = true
 
@@ -67,5 +67,4 @@ transform = Transform3D(1.24915, 0, 0, 0, 2.16203, 0, 0, 0, 1, 0.263517, 0.27106
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.48948, 0)
 
 [node name="Top Cam" type="Camera3D" parent="."]
-transform = Transform3D(0.0236926, 0.337046, -0.94119, -0.00848176, 0.941488, 0.336939, 0.999683, 0, 0.025165, -37.6509, 27.7517, 0)
-current = true
+transform = Transform3D(0.0236926, 0.337046, -0.94119, -0.00848176, 0.941488, 0.336939, 0.999683, -2.14142e-08, 0.0251651, -37.6509, 27.7517, 0)

@@ -47,6 +47,7 @@ offset_bottom = 74.0
 label_settings = SubResource("LabelSettings_4flbx")
 
 [node name="CrouchedLabel" type="Label" parent="UI"]
+layout_mode = 0
 offset_left = 2.0
 offset_top = 78.0
 offset_right = 205.0

@@ -53,9 +53,9 @@ func _physics_process(delta):
 	
 	# Handle Sprint.
 	if Input.is_action_pressed("sprint"):
-		speed = SPRINT_SPEED
+		speed = SPRINT_SPEED - (SPRINT_SPEED * 0.6 * float(crouched))
 	else:
-		speed = WALK_SPEED
+		speed = WALK_SPEED - (WALK_SPEED * 0.6 * float(crouched))
 
 	# Get the input direction and handle the movement/deceleration.
 	var input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
