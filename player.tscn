@@ -1,36 +1,54 @@
-[gd_scene load_steps=5 format=3 uid="uid://b0nnnepfjvfl4"]
+[gd_scene load_steps=6 format=3 uid="uid://cf5kxq77rhon6"]
 
-[ext_resource type="PackedScene" uid="uid://b8ktsdmhki6u4" path="res://art/DamagedHelmet.glb" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://cqii4hbfnj6gv" path="res://player.gd" id="1_4flbx"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_onrkg"]
-size = Vector3(60, 1, 60)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sh265"]
+radius = 0.3
+height = 1.6
 
-[sub_resource type="BoxMesh" id="BoxMesh_i3pqv"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4flbx"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_hqtel"]
-radius = 0.949178
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_sh265"]
+material = SubResource("StandardMaterial3D_4flbx")
+radius = 0.3
+height = 1.6
 
-[node name="Main" type="Node"]
+[sub_resource type="LabelSettings" id="LabelSettings_4flbx"]
+font_size = 24
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_4flbx")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
-shape = SubResource("BoxShape3D_onrkg")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_sh265")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
-transform = Transform3D(60, 0, 0, 0, 1, 0, 0, 0, 60, 0, -1, 0)
-mesh = SubResource("BoxMesh_i3pqv")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_sh265")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17.3566, 0)
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.20229, 0)
 
-[node name="Player2" type="CharacterBody3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="Head"]
+size = 5.762
 
-[node name="Pivot" type="Node3D" parent="Player2"]
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
 
-[node name="DamagedHelmet" parent="Player2/Pivot" instance=ExtResource("1_4flbx")]
+[node name="VelocityLabel" type="Label" parent="UI"]
+layout_mode = 0
+offset_right = 203.0
+offset_bottom = 74.0
+label_settings = SubResource("LabelSettings_4flbx")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.271064)
-shape = SubResource("SphereShape3D_hqtel")
+[node name="CrouchedLabel" type="Label" parent="UI"]
+offset_left = 2.0
+offset_top = 78.0
+offset_right = 205.0
+offset_bottom = 152.0
+label_settings = SubResource("LabelSettings_4flbx")
